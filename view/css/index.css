@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap');
+
+* {
+    transition: 0.8s ease;
+}
+
+body {
+    margin: 0;
+    background-color: black;
+}
+
+main {
+    width: 100vw;
+    min-height: 100vh;
+    background: url('../img/bg.png');
+    background-position: center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    font-family: 'Baloo 2', cursive;
+}
+
+.sec_start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    width: fit-content;
+
+    padding: 3rem;
+    border-radius: 2rem;
+    box-shadow: 0px 5px 14px 0px #011973;
+
+    opacity: 0;
+}
+
+.str_titulo {
+    color: rgb(10, 10, 56);
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.str_button {
+    color: white;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    cursor: pointer;
+    border: none;
+    border-radius: 2rem;
+    background: linear-gradient(90deg, rgb(5, 0, 90) 0%, rgba(9,9,121,1) 35%, rgba(0,198,255,1) 100%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.str_button img {
+    width: 200px;
+    height: 200px;
+    filter: invert(100%);
+}
+
+.str_button span {
+    font-size: 2rem;
+}
+
+.sec_planetas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    display: none;
+    opacity: 0;
+}
+
+.pln_button {
+    padding: 2rem;
+    margin: 2rem;
+    background: white;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0px 4px 20px 0px #011973;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pln_button img {
+    width: 200px;
+    margin-bottom: 0.5rem;
+}
+
+.pln_button span {
+    font-family: 'Baloo 2', cursive;
+    color: #3f3f66;
+    font-size: 2rem;
+}
+
+.sec_planetaInfo {
+    position: relative;
+    max-width: 1000px;
+    width: 80%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    background-color: white;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0px 5px 14px 0px #011973;
+
+    display: none;
+    opacity: 0;
+}
+
+.pinf_img {
+    width: 150px;
+    margin-bottom: 1rem;
+}
+
+.pinf_titulo {
+    color: #00248e;
+    font-size: 3rem;
+    margin: 0;
+}
+
+.pinf_subtitulo {
+    margin: 0;
+    margin-bottom: 2rem;
+    color: #001a66;
+    text-align: center;
+}
+
+.pinf_texto {
+    font-size: 1.1rem;
+    color: #000b2c;
+    text-align: center;
+}
+
+#btn_voltar {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+}

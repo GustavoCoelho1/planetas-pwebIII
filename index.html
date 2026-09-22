@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore o Sistema Solar em uma experiência tridimensional interativa construída com Three.js e TypeScript."
+    />
+    <meta name="theme-color" content="#030712" />
+    <title>EspaçoX Remaster — Explore o Sistema Solar</title>
+  </head>
+  <body>
+    <div id="carregamento" class="carregamento" role="status" aria-live="polite">
+      <div class="carregamento__orbita" aria-hidden="true">
+        <span></span>
+      </div>
+      <p class="carregamento__rotulo">Preparando exploração…</p>
+      <div
+        class="carregamento__trilho"
+        role="progressbar"
+        aria-label="Progresso do carregamento"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+      >
+        <span id="barra-carregamento"></span>
+      </div>
+      <span id="porcentagem-carregamento" class="carregamento__porcentagem">0%</span>
+    </div>
+
+    <main id="aplicacao" class="aplicacao" aria-label="Exploração interativa do Sistema Solar">
+      <canvas
+        id="cena-3d"
+        aria-label="Visualização tridimensional do Sistema Solar. Use a navegação de planetas para uma alternativa acessível."
+      ></canvas>
+
+      <header class="cabecalho">
+        <button id="marca" class="marca" type="button" aria-label="EspaçoX Remaster">
+          <span class="marca__simbolo" aria-hidden="true"></span>
+          <span>
+            <strong>EspaçoX</strong>
+            <small>Remaster · Sistema Solar</small>
+          </span>
+        </button>
+      </header>
+
+      <section id="orientacao" class="orientacao" aria-label="Instruções de navegação">
+        <span class="orientacao__titulo">Explore o Sistema Solar</span>
+        <span class="orientacao__texto">Arraste para orbitar · Scroll para aproximar · Selecione um planeta</span>
+      </section>
+
+      <section class="controles" aria-label="Controles da simulação">
+        <button id="alternar-pausa" class="controle controle--icone" type="button" aria-pressed="false">
+          <span class="icone-pausa" aria-hidden="true"></span>
+          <span class="sr-only">Pausar simulação</span>
+        </button>
+
+        <label class="controle controle--seletor" for="velocidade">
+          <span>Tempo</span>
+          <select id="velocidade" aria-label="Velocidade da simulação">
+            <option value="0.5">0.5×</option>
+            <option value="1" selected>1×</option>
+            <option value="2">2×</option>
+            <option value="5">5×</option>
+            <option value="10">10×</option>
+          </select>
+        </label>
+
+        <button id="alternar-orbitas" class="controle" type="button" aria-pressed="true">
+          <span class="controle__indicador" aria-hidden="true"></span>
+          Órbitas
+        </button>
+
+        <button id="alternar-informacoes" class="controle" type="button" aria-pressed="true" disabled>
+          Informações
+        </button>
+
+        <button id="resetar-camera" class="controle controle--icone" type="button">
+          <span class="icone-reset" aria-hidden="true"></span>
+          <span class="sr-only">Resetar câmera</span>
+        </button>
+      </section>
+
+      <nav class="navegacao-planetas" aria-label="Selecionar planeta">
+        <div id="lista-planetas" class="navegacao-planetas__lista"></div>
+      </nav>
+
+      <aside id="painel-planeta" class="painel-planeta" aria-labelledby="planeta-nome" aria-hidden="true">
+        <button id="voltar-visao-geral" class="painel-planeta__voltar" type="button">
+          <span aria-hidden="true">←</span> Visão geral
+        </button>
+
+        <div class="painel-planeta__cabecalho">
+          <span id="planeta-ordem" class="painel-planeta__ordem"></span>
+          <h1 id="planeta-nome"></h1>
+          <p id="planeta-tipo" class="painel-planeta__tipo"></p>
+          <p id="planeta-descricao" class="painel-planeta__descricao"></p>
+        </div>
+
+        <dl class="painel-planeta__dados">
+          <div><dt>Diâmetro</dt><dd id="planeta-diametro"></dd></div>
+          <div><dt>Distância do Sol</dt><dd id="planeta-distancia"></dd></div>
+          <div><dt>Gravidade</dt><dd id="planeta-gravidade"></dd></div>
+          <div><dt>Temperatura média</dt><dd id="planeta-temperatura"></dd></div>
+          <div><dt>Duração do dia</dt><dd id="planeta-dia"></dd></div>
+          <div><dt>Duração do ano</dt><dd id="planeta-ano"></dd></div>
+          <div><dt>Luas conhecidas</dt><dd id="planeta-luas"></dd></div>
+        </dl>
+
+        <div class="painel-planeta__curiosidade">
+          <span>Observação</span>
+          <p id="planeta-curiosidade"></p>
+        </div>
+
+        <a id="planeta-fonte" class="painel-planeta__fonte" href="#" target="_blank" rel="noreferrer">
+          Dados: NASA Science <span aria-hidden="true">↗</span>
+        </a>
+      </aside>
+
+      <div id="rotulo-hover" class="rotulo-hover" aria-hidden="true"></div>
+      <div id="notificacao" class="notificacao" role="status" aria-live="polite"></div>
+      <p id="anuncio" class="sr-only" aria-live="polite"></p>
+
+      <section id="fallback-webgl" class="fallback-webgl" hidden>
+        <span class="fallback-webgl__icone" aria-hidden="true">✦</span>
+        <h1>O espaço 3D não pôde ser iniciado</h1>
+        <p>Seu navegador precisa oferecer suporte a WebGL. Você ainda pode conhecer os planetas pela navegação abaixo.</p>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
